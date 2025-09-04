@@ -1,9 +1,11 @@
 import React from 'react'
+import Navbar from './Components/Navbar/Navbar'
 
 const App = () => {
   return (
     <div>
-      <h1>app</h1>
+      <Navbar/>
+      
     </div>
   )
 }

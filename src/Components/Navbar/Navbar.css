@@ -1,0 +1,127 @@
+.black-container {
+  background-color:#444444;
+  padding: 17px 25px;
+}
+
+.black-links {
+  display: flex;
+  justify-content: flex-end; 
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.black-links li {
+  margin-left: 20px;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.black-li:hover {
+  text-decoration: underline;
+}
+
+.black-li1:hover {
+  background-color: rgb(25, 16, 122);
+  color: #fff;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.black-links li:not(:last-child)::after {
+  content: "|";
+  margin-left: 10px;
+  color: white;
+}
+
+/* main navbar */
+.main-navbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  height:30px;
+  cursor:pointer;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+  flex: 1;
+  justify-content: space-evenly;
+}
+
+.nav-links li {
+  margin-top: 13px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-links li:hover {
+  color: #2a4866ff;
+}
+
+/* Buttons */
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-buttons button {
+  padding: 15px 16px;
+  font-size: 14px;
+  font-weight: 550;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.login-btn {
+  border: none;
+  background-color: rgb(6 132 104 / 1);
+  color:#fff;
+}
+
+.login-btn:hover {
+  background-color: rgba(44, 150, 125, 1);
+}
+
+.signup-btn {
+  background-color: #fff;
+  color: #333;
+}
+
+.signup-btn:hover {
+  background-color: #294b80ff;
+  color:#fff;
+}
+
+/* Heart */
+.heart {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.heart svg {
+  font-size: 22px;
+  color: red;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.heart svg:hover {
+  transform: scale(2);
+  color: darkred;
+}
