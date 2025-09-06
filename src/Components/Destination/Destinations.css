@@ -16,12 +16,20 @@
   margin-bottom: 1.25rem;
 }
 
-/* Grid same look on mobile & desktop (responsive columns) */
+/* Default responsive grid (mobile & tablet untouched) */
 .dest-grid {
   display: grid;
   gap: 18px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
+
+/* Desktop view: force 3 per line */
+@media (min-width: 1024px) {
+  .dest-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 
 /* Card */
 .dest-card {
