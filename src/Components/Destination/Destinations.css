@@ -16,7 +16,7 @@
   margin-bottom: 1.25rem;
 }
 
-/* Default responsive grid (mobile & tablet untouched) */
+/* Grid same look on mobile & desktop (responsive columns) */
 .dest-grid {
   display: grid;
   gap: 18px;
@@ -29,7 +29,6 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 
 /* Card */
 .dest-card {
@@ -114,8 +113,136 @@
   transform: translateY(1px);
 }
 
-/* Small devices keep same block look */
+/* Tablet view */
+@media (max-width: 1024px) {
+  .destinations-wrap {
+    padding: 0 1rem;
+  }
+  
+  .dest-title {
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .dest-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  
+  .dest-card {
+    height: 200px;
+  }
+  
+  .dest-label span {
+    font-size: 1.3rem;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .destinations-sec {
+    padding: 2.5rem 0 3rem;
+  }
+  
+  .destinations-wrap {
+    padding: 0 1rem;
+  }
+  
+  .dest-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+  
+  .dest-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  
+  .dest-card {
+    height: 180px;
+    border-radius: 12px;
+  }
+  
+  .dest-label span {
+    font-size: 1.25rem;
+  }
+  
+  .dest-hover {
+    padding: 12px;
+  }
+  
+  .dest-hover p {
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+  }
+  
+  .dest-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .destinations-sec {
+    padding: 2rem 0 2.5rem;
+  }
+  
+  .destinations-wrap {
+    padding: 0 0.75rem;
+  }
+  
+  .dest-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .dest-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .dest-card {
+    height: 160px;
+    border-radius: 10px;
+  }
+  
+  .dest-label span {
+    font-size: 1.1rem;
+  }
+  
+  .dest-hover {
+    padding: 10px;
+  }
+  
+  .dest-hover p {
+    font-size: 0.85rem;
+    line-height: 1.25rem;
+  }
+  
+  .dest-btn {
+    padding: 7px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Extra small devices */
 @media (max-width: 380px) {
-  .dest-card { height: 190px; }
-  .dest-label span { font-size: 1.15rem; }
+  .dest-card { 
+    height: 150px; 
+  }
+  
+  .dest-label span { 
+    font-size: 1rem; 
+  }
+  
+  .dest-hover p {
+    font-size: 0.8rem;
+  }
+  
+  .dest-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
 }
