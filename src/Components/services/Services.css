@@ -49,7 +49,6 @@
   font-weight: 600;
   color: #444;
 }
-
 /* Tablet view */
 @media (max-width: 1024px) {
   .services-container {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";  // Make sure this is imported
 import "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobe, faAngleDown, faBars, faTimes, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faGlobe, faAngleDown, faBars, faTimes, faUser  } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons"; // Hollow heart
 
 const Navbar = () => {
@@ -12,7 +12,6 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -87,7 +86,7 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faRegularHeart} />
           </Link>
           <Link to="#" className="icon-btn account">
-            <FontAwesomeIcon icon={faUser} />
+            <FontAwesomeIcon icon={faUser } />
           </Link>
 
           {/* Mobile Menu Button */}
@@ -127,7 +126,7 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div
             className="mobile-menu-overlay"
-            onClick={toggleMobileMenu}
+            onClick={() => setIsMobileMenuOpen(false)}
           ></div>
         )}
       </nav>
