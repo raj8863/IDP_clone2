@@ -59,12 +59,9 @@ export default function Destinations() {
                 <span>{d.name}</span>
               </div>
 
-              {/* Shown on hover/focus */}
+              {/* Shown on hover*/}
               <div className="dest-hover">
                 <p>{d.info}</p>
-                <Link className="dest-btn" to={`/study/${d.slug}`}>
-                  Discover
-                </Link>
               </div>
             </div>
           ))}
