@@ -1,15 +1,98 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";  // Make sure this is imported
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobe, faAngleDown, faBars, faTimes, faUser  } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons"; // Hollow heart
+import {  faGlobe,  faAngleDown,  faBars,  faTimes,  faUser ,} from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
+
+
+
+ const styles = {
+  navButton: {
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    fontSize:"inherit",
+    color: "inherit",
+    display: "flex",
+    alignItems: "center",
+    gap: "3px",
+  },
+  dropdownMenu: {
+    position: "absolute",
+    backgroundColor: "rgba(255, 255, 255, 1)",
+    boxShadow: "0 4px 8px rgba(18, 2, 2, 0.1)",
+    listStyle: "none",
+    padding: "10px 0",
+    marginTop: "5px",
+    borderRadius: "4px",
+    zIndex: 1000,
+    minWidth: 200,
+  },
+  dropdownItem: {
+    padding: "8px 20px",
+    cursor: "pointer",
+    whiteSpace: "nowrap",
+  },
+  navItem: {
+    cursor: "pointer",
+    position: "relative",
+  },
+};
+
+
+const dropdownData = {
+  "Study-abroad-steps": [
+    "Why study abroad?",
+    "Where and what to study?",
+    "How do I apply?",
+    "After receiving an offer",
+    "Prepare to depart",
+    "Arrive and thrive",
+  ],
+  "Study-destinations": [
+    "Study in Australia",
+    "Study in Canada",
+    "Study in Ireland",
+    "Study in UK",
+    "Study in USA",
+  ],
+  "Find-a-course": [
+    "Undergraduate",
+    "Postgraduate",
+    "Diploma",
+    "Certificate",
+    "Short Courses",
+  ],
+  IELTS: [
+    "IELTS Academic",
+    "IELTS General Training",
+    "IELTS Preparation",
+    "Test Dates",
+  ],
+  "Student-essentials": [
+    "Accommodation",
+    "Health Insurance",
+    "Student Visa",
+    "Travel Tips",
+  ],
+};
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null); // store key of open dropdown
+
+  const toggleDropdown = (key) => {
+    setOpenDropdown((prev) => (prev === key ? null : key));
+  };
+
+  const closeDropdown = () => {
+    setOpenDropdown(null);
+  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    closeDropdown();
   };
 
   useEffect(() => {
@@ -57,21 +140,39 @@ const Navbar = () => {
 
         {/* Desktop Navigation Links */}
         <ul className="nav-links">
-          <li>
-            <Link to="#" onClick={() => setIsMobileMenuOpen(false)}>Study abroad steps</Link>
-          </li>
-          <li>
-            <Link to="#" onClick={() => setIsMobileMenuOpen(false)}>Study destinations</Link>
-          </li>
-          <li>
-            <Link to="#" onClick={() => setIsMobileMenuOpen(false)}>Find a course</Link>
-          </li>
-          <li>
-            <Link to="#" onClick={() => setIsMobileMenuOpen(false)}>IELTS</Link>
-          </li>
-          <li>
-            <Link to="#" onClick={() => setIsMobileMenuOpen(false)}>Student Essentials</Link>
-          </li>
+          {Object.entries(dropdownData).map(([key, items]) => (
+            <li
+              key={key}
+              style={styles.navItem}
+              onMouseEnter={() => setOpenDropdown(key)}
+              onMouseLeave={closeDropdown}
+            >
+              <button
+                style={styles.navButton}
+                onClick={() => toggleDropdown(key)}
+                aria-haspopup="true"
+                aria-expanded={openDropdown === key}
+              >
+                {key
+                  .split("-")
+                  .map((w) => w[0].toUpperCase() + w.slice(1))
+                  .join(" ")}{" "}
+                <FontAwesomeIcon icon={faAngleDown} />
+              </button>
+
+              {openDropdown === key && (
+                <ul style={styles.dropdownMenu}>
+                  {items.map((item, idx) => (
+                    <li key={idx} style={styles.dropdownItem}>
+                      <Link to="#" onClick={closeDropdown} style={{ color: "#333", textDecoration: "none" }}>
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
         </ul>
 
         {/* Desktop Buttons */}
@@ -98,26 +199,25 @@ const Navbar = () => {
         {/* Mobile Menu Sidebar */}
         <div className={`mobile-sidebar ${isMobileMenuOpen ? "open" : ""}`}>
           <ul className="mobile-links">
+            {Object.entries(dropdownData).map(([key, items]) => (
+              <li key={key}>
+                <Link to="#" onClick={toggleMobileMenu}>
+                  {key
+                    .split("-")
+                    .map((w) => w[0].toUpperCase() + w.slice(1))
+                    .join(" ")}
+                </Link>
+              </li>
+            ))}
             <li>
-              <Link to="#" onClick={toggleMobileMenu}>Study abroad steps</Link>
+              <button className="login-btn" onClick={toggleMobileMenu}>
+                Avail Free counselling
+              </button>
             </li>
             <li>
-              <Link to="#" onClick={toggleMobileMenu}>Study destinations</Link>
-            </li>
-            <li>
-              <Link to="#" onClick={toggleMobileMenu}>Find a course</Link>
-            </li>
-            <li>
-              <Link to="#" onClick={toggleMobileMenu}>IELTS</Link>
-            </li>
-            <li>
-              <Link to="#" onClick={toggleMobileMenu}>Student Essentials</Link>
-            </li>
-            <li>
-              <button className="login-btn" onClick={toggleMobileMenu}>Avail Free counselling</button>
-            </li>
-            <li>
-              <button className="signup-btn" onClick={toggleMobileMenu}>Sign in</button>
+              <button className="signup-btn" onClick={toggleMobileMenu}>
+                Sign in
+              </button>
             </li>
           </ul>
         </div>
@@ -127,7 +227,7 @@ const Navbar = () => {
           <div
             className="mobile-menu-overlay"
             onClick={() => setIsMobileMenuOpen(false)}
-          ></div>
+          />
         )}
       </nav>
     </>
