@@ -6,7 +6,7 @@ const DESTINATIONS = [
   {
     slug: "australia",
     name: "Australia",
-    img: "https://www.earthsattractions.com/wp-content/uploads/2018/08/sydney_opera-unsplash.jpg", // public/images/australia.jpg
+    img: "https://www.earthsattractions.com/wp-content/uploads/2018/08/sydney_opera-unsplash.jpg",
     info: "Top universities, great lifestyle and strong post-study work rights.",
   },
   {
